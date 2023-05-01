@@ -1,3 +1,181 @@
-A multiple bit by bit project to create AirBnB clone.
+AirBnB_clone_v1: Console and web static
+hbnb
 
-the first part of this project is called CONSOLE
+Table of Contents
+Description
+Purpose
+Requirements
+File Structure
+Usage
+Examples
+Bugs
+Authors
+License
+Description
+hbnb is a full-stack clone of the web application AirBnB. This clone was built in four iterative phases. This version includes completion of Phase 1, which has two parts: building 1) a command interpreter that parses and evaluates input from the commandline appropriately and 2) a landing page. Test suite included.
+
+Part 1: Build a command-line interpreter that handles AirBnB objects
+console
+
+Part 2: Create a landing page
+webstatic_diagram
+
+Links to other versions:
+
+AirBnB_clone_v2: MySQL, Deploy static, Web framework
+AirBnB_clone_v3: RESTful API
+AirBnB_clone_v4: Web dynamic (Final version!)
+Purpose
+The purpose of Phase 1 is to:
+
+create a parent class BaseModel that will take care of initialization, serialization, and deserialization of future instances
+create a simple flow of serialization/deserialization: instance <-> dictionary <-> JSON string <-> file
+create all classes used for AirBnb that inherit from BaseModel
+create an abstracted storage engine (FileStorage)
+create unittests to validate all our classes and storage engine
+create a command interpreter that can do the following:
+create a new object
+retrieve an object from a file, database, etc.
+do operations on objects
+update attributes of an object
+destroy an object
+learn how to do the following:
+create a Python package
+create a command interpreter in Python using the cmd module
+implement Unit testing on a large project
+serialize and deserialize a class
+write and read a JSON file
+manage datetime
+create UUIDs
+use *args and **kwargs
+handle named arguments in a function
+create an HTML page
+add complex CSS style to an element
+Requirements
+Must follow Betty style and document guidelines
+Allowed editors: vi, vim, emacs
+Must have a README.md file
+All header files must be include guarded
+No more than 5 functions per files
+Must have documentation
+Must have unittests that can be executed using python3 -m unittest discover tests
+File Structure
+AUTHORS - list of contributors
+console.py - command interpreter
+do_create - create a new instance of a class
+do_show - prints string representation of an instance based on class name and id
+do_all - prints all string representation of all instances based or not on the class name
+do_destroy - deletes an instance based on the class name and id
+do_update - updates an instance based on the class name and id by adding or updating attribute
+emptyline - ensures that hitting 'enter' will not remember the last command
+do_quit - quit program
+do_EOF - exit at end of file
+models - contains models and engine files
+base_model.py - parent class that will take care of initialization/serialization/deserialization of future instances
+__init__ - initialize instance attributes
+__str__ - creates formatted string representation of instance
+__repr__ - returns string representation of instance
+save - updates public instance attribute updated_at with current datetime
+to_dict - creates a dictionary containing all keys/values of __dict__ of the instance
+user.py - class User
+city.py - class City
+state.py - class State
+place.py - class Place
+review.py - class Review
+amenity.py - class Amenity
+__init__.py - initialization code for Python package models
+tests - unit test files
+engine - contains storage engines
+file_storage.py - class FileStorage
+all - returns the dictionary __objects
+new - sets in __objects the obj with key <obj class name>.id
+save - serializes __objects to the JSON file (path: __file_path)
+reload - deserializes the JSON file to __objects
+tests - contains tests for all models and storage engines mentioned above
+web_static - contains HTML, CSS, and images files
+0-index.html - a basic HTML page that contains a header and footer like below: 0-index.html
+
+1-index.html - an HTML page that displays a header and a footer by using the style tag in the head tag (same display as 0-index.html)
+
+2-index.html - an HTML page that displays a header and a footer by using CSS files (same display as 1-index.html)
+
+3-index.html - an HTML page that displays a header and footer by using CSS files to display like below: 3-index.html
+
+4-index.html - an HTML page that displays a header, footer and a filters box with a search button 4-index.html
+
+5-index.html - an HTML page that displays a header, footer and a filters box 5-index.html
+
+6-index.html - an HTML page that displays a header, footer and a filters box with dropdown 6-index.html_part1 6-index.html_part2
+
+7-index.html - an HTML page that displays a header, footer, a filters box with dropdown and results 7-index.html
+
+8-index.html - an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search 8-index.html
+
+101-index.html - an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search, uses Flexible boxes for all Place articles (same display as 8-index.html)
+
+102-index.html - an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search; uses Flexible boxes for all Place articles; has responsive design (same display as 8-index.html)
+
+styles - contains CSS files
+
+2-common.css - global (i.e. body) style
+2-header.css - header style
+2-footer.css - footer style
+3-common.css - body style
+3-header.css - header style
+3-footer.css - footer style
+4-common.css - body style
+4-filters.css - filters style
+5-filters.css - filters style
+6-filters.css - filters style
+7-places.css - places style
+8-places.css - places style
+101-places.css - places style
+102-places.css - places style
+Execution
+Unit Testing
+python3 -m unittest discover tests
+
+Console
+./console.py
+
+Usage Examples
+Interactive Mode
+$ ./console.py
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) 
+(hbnb) 
+(hbnb) quit
+$
+Non-Interactive Mode
+$ echo "help" | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb)
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+Bugs
+At this time, there are no known bugs.
+
+Authors
+Nick Teixeira | GitHub | Twitter
+Becky Chen | GitHub | Twitter
+License
+hbnb is open source and free to download and use
